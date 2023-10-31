@@ -18,7 +18,7 @@ class Stack{
     
     void push(int data){
         if(this -> top == size-1){
-            cout << "Stack is Overloaded" << endl;
+            cout << "Stack is Overflow" << endl;
         }
         else{
             top++;
@@ -26,8 +26,17 @@ class Stack{
         }
     }
     
-    void pop(){
+    int pop(){
+       if(this->top == -1){
+           cout << "Stack is Underflow" << endl;
+           return -1;
+       }
         
+       int value = this->arr[top];
+       arr[top] = 0;
+       top--;
+       
+       return value;
     }
     
     void printStack(){
@@ -37,17 +46,38 @@ class Stack{
         cout << endl;
     }
     
+    
+    int sizeOfStack(){
+        return sizeof(this->arr)/sizeof(this->arr[0]);
+    }
+    
 };
 
 int main() {
     // Write C++ code here
     std::cout << "Hello world!" << endl << endl;
     
-    Stack st(10);
+    Stack st(8);
     
     st.push(10);
     st.push(11);
+    st.push(12);
+    st.push(13);
+    st.push(15);
+    st.push(16);
+    st.push(17);
+    st.push(18);
     st.printStack();
-
+    
+    cout << "Size of Stack = " << st.sizeOfStack();
+    
+    cout << "Your poped element = " << st.pop() << endl;
+    cout << "Your poped element = " << st.pop() << endl;
+    cout << "Your poped element = " << st.pop() << endl;
+    
+    st.printStack();
+    
+    cout << "Size of Stack = " << st.sizeOfStack();
+    
     return 0;
 }
