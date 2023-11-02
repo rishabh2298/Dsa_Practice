@@ -32,6 +32,28 @@ public class CircularQueueImplementationUsingArray {
 			this.arr[rear] = data;
 		}
 		
+		
+		int dequeue() {
+			
+			int result;
+			
+			if(this.front == -1) {
+				System.out.println("Queue is Empty...");
+				return -1;
+			}
+			else if(this.rear == this.front) {
+				result = this.arr[front];
+				front = rear = -1;
+				return result;
+			}
+			else {
+				result = this.arr[front];
+				front = (this.front+1) % size;
+				return result;
+			}
+		}
+
+		
 		void printQueue() {
 			StringBuilder result = new StringBuilder();
 			
@@ -69,7 +91,7 @@ public class CircularQueueImplementationUsingArray {
 		
 		CircularQueue circularQueue = new CircularQueue(5);
 		
-		// System.out.println("Dequeue Element = "+ circularQueue.dequeue());
+		System.out.println("Dequeue Element = "+ circularQueue.dequeue());
 		
 		circularQueue.enqueue(10);
 		circularQueue.enqueue(20);
@@ -77,8 +99,8 @@ public class CircularQueueImplementationUsingArray {
 		
 		circularQueue.printQueue();
 		
-		// System.out.println("Dequeue Element = "+ circularQueue.dequeue());
-		// System.out.println("Dequeue Element = "+ circularQueue.dequeue());
+		System.out.println("Dequeue Element = "+ circularQueue.dequeue());
+		System.out.println("Dequeue Element = "+ circularQueue.dequeue());
 		
 		circularQueue.printQueue();
 		
