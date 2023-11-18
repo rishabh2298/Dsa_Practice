@@ -52,7 +52,21 @@ public class BTreeMinMax {
 		return Math.min(Math.min(leftMin, rightMin), rootNode.data);
 	}
 	
-
+	
+	static int maxOfTree(Node rootNode) {
+		
+		if(rootNode == null) {
+			return Integer.MIN_VALUE;
+		}
+		
+		
+		int leftMax = maxOfTree(rootNode.leftNode);
+		int rightMax = maxOfTree(rootNode.rightNode);
+		
+		return Math.max(Math.max(leftMax, rightMax), rootNode.data);
+	}
+	
+	
 	public static void main(String[] args) {
 		
 		sc = new Scanner(System.in);
@@ -60,6 +74,7 @@ public class BTreeMinMax {
 		Node rootNode = createBinaryTree();
 		
 		System.out.println("Minimum value = " + minOfTree(rootNode));
+		System.out.println("Maximum value = " + maxOfTree(rootNode));
 	}
 	
 }
