@@ -87,6 +87,8 @@ public class LeftViewTree {
 		
 		if(list.size() < level + 1) {
 //			list.get(level) == null
+//			for this size of Arraylist = height of tree
+			
 			list.add(rootNode);
 		}
 		
