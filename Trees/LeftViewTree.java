@@ -1,7 +1,6 @@
 package Dsa_Practice.Trees;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -86,7 +85,8 @@ public class LeftViewTree {
 		}
 		
 		
-		if(list.get(level) == null) {
+		if(list.size() < level + 1) {
+//			list.get(level) == null
 			list.add(rootNode);
 		}
 		
@@ -111,8 +111,8 @@ public class LeftViewTree {
 		
 		printLeftView2(rootNode, list, 0);
 		
-		for(int i=0; i<list.size(); i++) {
-			System.out.print(list.get(i).data + " ");
+		for(Node node : list) {
+			System.out.print(node.data + " ");
 		}
 		System.out.println();
 		
