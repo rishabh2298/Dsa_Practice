@@ -1,5 +1,6 @@
 package Dsa_Practice.Trees;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -17,6 +18,7 @@ public class RightViewTree {
 	
 	
 	static int idx = -1;
+	
 	
 	static Node builtTree(int[] arr) {
 		idx++;
@@ -91,14 +93,49 @@ public class RightViewTree {
 	}
 	
 	
+	static void printRightView2(Node rootNode, ArrayList<Node> list, int level) {
+		
+		if(rootNode == null) {
+			return;
+		}
+		
+		
+		list.set(level, rootNode);
+		
+		printRightView2(rootNode.leftNode, list, level + 1);
+		printRightView2(rootNode.rightNode, list, level + 1);
+		
+	}
+	
+	
 	public static void main(String[] args) {
 		
 		int[] arr = {4,7,-1,-1,6,-1,2,5,-1,-1,1,3,-1,-1,-1};
 		
 		Node rootNode = builtTree(arr);
 		
-		
+		// Way-1 TC=O(N) SC= (Max elem at a particular level + null)
 		printRightView1(rootNode);
 		
+
+		// Way-2 TC=O(N) SC= (H);
+		int maxHeight = heightOfTree(rootNode);
+		
+		ArrayList<Node> list = new ArrayList();
+		
+		for(int i=0; i<maxHeight; i++) {
+			list.add(null);
+		}
+		
+		printRightView2(rootNode, list, 0);
+		
+		for(Node node : list) {
+			System.out.print(node.data + " ");
+		}
+		System.out.println();
+		
+//		4 6 2 1 3 
+//		4 6 2 1 3 
+
 	}
 }
