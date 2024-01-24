@@ -35,7 +35,7 @@ class Main{
                     break;
                 }
             }
-            
+        
             // for even pallindrome
             low = i-1;
             high = i;
