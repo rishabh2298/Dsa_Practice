@@ -64,6 +64,39 @@ class Main{
     }
     
     
+    private static void rotateElements3(int N, long K, int[] arr){
+        
+        // same as rotateElements-2 only
+        // instead of result[] we will direct print
+        
+        int k;
+        
+        if(K > N){
+            k = (int)(K%N);
+        }
+        else{
+            k = (int)K;
+        }
+        
+         int j=0;    // for result index
+        
+        // save 1st half of rotated array
+        // so start from N-k because that will become 1st element
+        
+        for(int i=N-k; i<N; i++){
+            System.out.print(arr[i]+" ");
+        }
+            
+        // till N-k, cause that will last element, try dry run
+        
+        for(int i=0; i<N-k && j<N; i++)
+            System.out.print(arr[i]+" ");
+
+        // to print next line
+        System.out.println();
+    }
+    
+    
     public static void main(String[] args){
         
         Scanner scanner = new Scanner(System.in);
@@ -83,6 +116,8 @@ class Main{
             // Tc=O(N) Sc=O(N);
             rotateElements2(N,K,arr);
             
+            // Tc=O(N) Sc=O(1);
+            rotateElements3(N,K,arr);
         }
     }
 }
