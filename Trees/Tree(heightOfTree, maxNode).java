@@ -1,6 +1,7 @@
 /*
 
 Height of Tree = 4
+Max Node = 10
 
 */
 
@@ -33,6 +34,8 @@ class HelloWorld {
         int height = heightOfTree(node);
         System.out.println("Height of Tree = " + height);
         
+        int value = maxNode(node);
+        System.out.println("Max Node = " + value);
     }
     
     static int index = -1;
@@ -55,5 +58,14 @@ class HelloWorld {
         }
         
         return 1 + Math.max(heightOfTree(node.left), heightOfTree(node.right));
+    }
+    
+    private static int maxNode(Node node){
+        if(node == null){
+            return 0;
+        }
+        
+        return Math.max(node.data, 
+                Math.max(maxNode(node.left), maxNode(node.right)));
     }
 }
