@@ -4,10 +4,14 @@
 /*
 
 1 2 4 7 8 5 5 9 3 6 10 
+7 4 8 2 5 5 9 1 6 10 3 
 
 === Code Execution Successful ===
 
 */
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
 
 class HelloWorld {
     
@@ -38,6 +42,9 @@ class HelloWorld {
         preOrder(node);
         System.out.println();
         
+        inOrder(node);
+        System.out.println();
+        
     }
     
     static int index = -1;
@@ -64,6 +71,14 @@ class HelloWorld {
         preOrder(node.right);
     }
     
-    
+    private static void inOrder(Node node){
+        if(node == null){
+            return;
+        }
+        
+        inOrder(node.left);
+        System.out.print(node.data + " ");
+        inOrder(node.right);
+    }
     
 }
